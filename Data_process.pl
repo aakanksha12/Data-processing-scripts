@@ -49,14 +49,14 @@ print"$line\n";
 foreach my $temp(@query_prefix)
 {
 	my $out_file = $temp . ".out". ".txt"; # Concatenated fasta files for all the taxa for the given loci
-	my $align_out = $temp . "fasta"; # output alignment file generated using mafft
+	my $align_out = $temp . ".fasta"; # output alignment file generated using mafft
 foreach my $temp1(@db_prefix)
 {
 	my $file_name = $temp1 . ".$temp" . ".extract" . ".fasta"; # File generated using extract.pl
 	my $log_out = "log" . ".txt";
 	open(my $fh3,">>","$dir/$log_out") or die "Couldn't open $log_out\n";
 	{
-		if(-s "$dir1/seq_v4/$file_name") #checks whether extracted sequence file is present for that query
+		if(-s "$dir1/$file_name") #checks whether extracted sequence file is present for that query
 		{ 
 			print $fh3 "Query :$temp \t Genome: $temp1 \n";
 			open(my $fh4,"<","$dir1/$file_name") or die "Couldn't open $file_name\n"; # open the extracted query from genome generated using extract.pl
